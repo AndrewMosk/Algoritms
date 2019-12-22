@@ -1,26 +1,30 @@
-import lesson_2.Sort;
+import lesson_3.MyDeque;
 
 public class Main {
     public static void main(String[] args) {
-        Sort sort = new Sort(100000);
+        // строка в обратном порядке
+        String string = "qwerty";
 
-        long startTime = System.currentTimeMillis();
-        sort.selectionSort();
-        double time = (System.currentTimeMillis() - startTime) / 1000.0;
-        System.out.println("Сортировка выбором " + time + " секунд");
+        MyDeque<Character> MyDequeChar = new MyDeque<>();
+        for (int i = 0; i < string.length(); i++) {
+            MyDequeChar.insertLeft(string.charAt(i));
+        }
 
-        startTime = System.currentTimeMillis();
-        sort.insertionSort();
-        time = (System.currentTimeMillis() - startTime) / 1000.0;
-        System.out.println("Сортировка вставкой " + time + " секунд");
+        for (int i = 0; i < string.length(); i++) {
+            System.out.println(MyDequeChar.removeLeft());
+        }
+        System.out.println("");
+        // инты в прямом порядке - очередь
+        MyDeque<Integer> myDequeInt = new MyDeque<>();
+        for (int i = 0; i < 5; i++) {
+            //myDequeInt.insertLeft(i); // прямой порядок
+            myDequeInt.insertRight(i); // обратный порядок
+        }
 
-        startTime = System.currentTimeMillis();
-        sort.bubbleSort();
-        time = (System.currentTimeMillis() - startTime) / 1000.0;
-        System.out.println("Сортировка пузырьком " + time + " секунд");
-
-//      Сортировка выбором 12 - 15 секунд
-//      Сортировка вставкой 11 - 15 секунд
-//      Сортировка пузырьком 45 - 49 секунд
+        int f = 0;
+        for (int i = 0; i < 5; i++) {
+//            System.out.println(myDequeInt.removeRight());
+            System.out.println(myDequeInt.removeRight1());
+        }
     }
 }
