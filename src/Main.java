@@ -14,17 +14,18 @@ public class Main {
             System.out.println(MyDequeChar.removeLeft());
         }
         System.out.println("");
-        // инты в прямом порядке - очередь
+
+        // инты в прямом и обатном порядках
         MyDeque<Integer> myDequeInt = new MyDeque<>();
-        for (int i = 0; i < 5; i++) {
-            //myDequeInt.insertLeft(i); // прямой порядок
-            myDequeInt.insertRight(i); // обратный порядок
+        for (int i = 0; i < 10; i++) {
+            myDequeInt.insertLeft(i); // прямой порядок
+            //myDequeInt.insertRight(i); // обратный порядок
         }
 
         int f = 0;
-        for (int i = 0; i < 5; i++) {
-//            System.out.println(myDequeInt.removeRight());
-            System.out.println(myDequeInt.removeRight1());
+        for (int i = 0; i < 10; i++) {
+            //System.out.println(myDequeInt.removeRight()); // прямой порядок
+            System.out.println(myDequeInt.removeLeft()); // обратный порядок
         }
     }
 }

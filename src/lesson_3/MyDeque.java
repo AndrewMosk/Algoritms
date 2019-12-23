@@ -8,8 +8,7 @@ public class MyDeque<T> {
     private final int DEFAULT_CAPACITY = 10;
     private int begin = 0;
     private int end = 0;
-    private int begin1 = DEFAULT_CAPACITY-1;
-    private int end1 = DEFAULT_CAPACITY-1;
+    private int beginInsertRight = DEFAULT_CAPACITY-1;
 
     public MyDeque() {
         list = (T[]) new Object[DEFAULT_CAPACITY];
@@ -24,22 +23,13 @@ public class MyDeque<T> {
         end = nextIndex(end);
     }
 
-    public void insertRight(T value){ // инсерт из стека (слева). нужно как-то передалать на инсерт справа
+    public void insertRight(T value){
         if (isFull()) {
             throw new StackOverflowError();
         }
-        list[begin1] = value;
+        list[beginInsertRight] = value;
         size++;
-        begin1 = prevIndex(begin1);
-        //end = nextIndex(end); // чтоб работал метод удаления справа
-    }
-
-    public T removeRight1() {
-        T temp = peekFront();
-        size--;
-        list[begin1] = null;
-        begin1 = prevIndex(begin1);
-        return temp;
+        beginInsertRight = prevIndex(beginInsertRight);
     }
 
     private int prevIndex(int begin) {
