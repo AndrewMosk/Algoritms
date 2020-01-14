@@ -12,7 +12,7 @@ public class Main {
 
         System.out.println(stack.peek());
 
-        int size = stack.size();
+        int size = stack.getSize();
         for (int i = 0; i < size; i++) {
             System.out.print(stack.pop() + " ");
         }

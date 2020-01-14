@@ -3,7 +3,7 @@ package lesson4;
 public class MyLinkedStack<T>  {
     private MyLinkedList<T> stack = new MyLinkedList<>();
 
-    public int size(){
+    public int getSize(){
         return stack.size();
     }
 
