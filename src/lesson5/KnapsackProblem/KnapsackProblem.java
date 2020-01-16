@@ -20,9 +20,7 @@ public class KnapsackProblem {
         if (boxes[i].getWeight() > weight) {
             return findMaxValue(i - 1, weight);
         } else {
-            int a = findMaxValue(i - 1, weight);
-            int b = findMaxValue(i - 1, weight - boxes[i].getWeight()) + boxes[i].getValue();
-            return Math.max(a, b);
+            return Math.max(findMaxValue(i - 1, weight), findMaxValue(i - 1, weight - boxes[i].getWeight()) + boxes[i].getValue());
         }
     }
 }
