@@ -22,19 +22,34 @@ public class MySortedArrayList<T extends Comparable> extends MyArrayList<T> {
 
 
     public boolean binaryFind(T item) {
-        int lo = 0;
-        int hi = size() - 1;
-        while (lo <= hi) {
-            int mid = lo + (hi - lo) / 2;// (lo + hi)/2
-            if (item.compareTo(get(mid)) < 0) {
-                hi = mid - 1;
-            } else if (item.compareTo(get(mid)) > 0) {
-                lo = mid + 1;
-            } else {
-                return true;
-            }
+//        int lo = 0;
+////        int hi = size() - 1;
+////        while (lo <= hi) {
+////            int mid = lo + (hi - lo) / 2;// (lo + hi)/2
+////            if (item.compareTo(get(mid)) < 0) {
+////                hi = mid - 1;
+////            } else if (item.compareTo(get(mid)) > 0) {
+////                lo = mid + 1;
+////            } else {
+////                return true;
+////            }
+////        }
+////        return false;
+        return recBinaryFind(item, 0, size() - 1);
+
+    }
+
+    private boolean recBinaryFind(T item, int lo, int hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (item.compareTo(get(mid)) == 0) {
+            return true;
+        } else if (lo == hi) {
+            return false;
+        } else if (item.compareTo(get(mid)) < 0) {
+            return recBinaryFind(item, lo, mid);
+        } else {
+            return recBinaryFind(item, mid + 1, hi);
         }
-        return false;
     }
 
 }

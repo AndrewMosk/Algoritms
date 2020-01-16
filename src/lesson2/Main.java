@@ -34,33 +34,41 @@ public class Main {
 //        msal.add(1, 8);
 //        System.out.println(msal);
 //
-//        System.out.println(msal.binaryFind(88));
+//        System.out.println(msal.binaryFind(9));
 
 
-//        MyArrayList<Integer> mal = new MyArrayList<>(10);
-////
-//        for (int i = 0; i < 10 ; i++) {
-//            mal.add(rand.nextInt(100));
-//        }
+        MyArrayList<Integer> mal = new MyArrayList<>(100000);
 //
-//        System.out.println(mal);
-////        mal.selectionSort();
-////        mal.insertionSort();
-
-
-        MyArrayList<Box> boxes = new MyArrayList<>(10);
-
-        for (int i = 0; i < 7; i++) {
-            boxes.add(new Box(rand.nextInt(10), rand.nextInt(10)));
+        for (int i = 0; i < 100000 ; i++) {
+            mal.add(rand.nextInt(100));
         }
-        System.out.println(boxes);
-//        boxes.bubbleSort(Comparator.comparingInt(a->a.getY()));
-//        boxes.bubbleSort(Comparator.comparingInt(a->a.getX()*a.getY()));
-//        boxes.bubbleSort((a, b) -> a.getX()- b.getX());
-//        boxes.bubbleSort(Comparator.comparing(Box::getY).reversed());
-        boxes.bubbleSort(Comparator.comparingInt(Box::getX)
-                .thenComparingInt(Box::getY));
-        System.out.println(boxes);
+
+//        System.out.println(mal);
+        long begin = System.currentTimeMillis();
+
+        mal.qSort();
+
+//        mal.selectionSort();
+//        mal.insertionSort();
+        System.out.println(System.currentTimeMillis()- begin);
+
+//        System.out.println(mal);
+
+
+
+//        MyArrayList<Box> boxes = new MyArrayList<>(10);
+//
+//        for (int i = 0; i < 7; i++) {
+//            boxes.add(new Box(rand.nextInt(10), rand.nextInt(10)));
+//        }
+//        System.out.println(boxes);
+////        boxes.bubbleSort(Comparator.comparingInt(a->a.getY()));
+////        boxes.bubbleSort(Comparator.comparingInt(a->a.getX()*a.getY()));
+////        boxes.bubbleSort((a, b) -> a.getX()- b.getX());
+////        boxes.bubbleSort(Comparator.comparing(Box::getY).reversed());
+//        boxes.bubbleSort(Comparator.comparingInt(Box::getX)
+//                .thenComparingInt(Box::getY));
+//        System.out.println(boxes);
 
     }
 }

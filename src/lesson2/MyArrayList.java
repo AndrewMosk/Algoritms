@@ -94,7 +94,7 @@ public class MyArrayList<T extends Comparable> {
         for (int i = 0; i < size - 1; i++) {
             int imin = i;
             for (int j = i + 1; j < size; j++) {
-                if( list[j].compareTo(list[imin])<0){
+                if (list[j].compareTo(list[imin]) < 0) {
                     imin = j;
                 }
             }
@@ -102,13 +102,13 @@ public class MyArrayList<T extends Comparable> {
         }
     }
 
-    public void insertionSort(){
+    public void insertionSort() {
         T key;
-        for (int i = 1; i <size ; i++) {
+        for (int i = 1; i < size; i++) {
             int j = i;
-            key  = list[i];
-            while(j>0 && key.compareTo(list[j-1])<0){
-                list[j] = list[j-1];
+            key = list[i];
+            while (j > 0 && key.compareTo(list[j - 1]) < 0) {
+                list[j] = list[j - 1];
                 j--;
             }
             list[j] = key;
@@ -131,24 +131,60 @@ public class MyArrayList<T extends Comparable> {
 ////        }
 ////    }
 
-    public void bubbleSort(Comparator<T> comparator){
+    public void bubbleSort(Comparator<T> comparator) {
         boolean isSwap;
-        for (int i = size-1; i > 0 ; i--) {
+        for (int i = size - 1; i > 0; i--) {
             isSwap = false;
-            for (int j = 0; j < i ; j++) {
-                if( comparator.compare(list[j+1],list[j])<0 ){
-                    swap(j+1, j);
+            for (int j = 0; j < i; j++) {
+                if (comparator.compare(list[j + 1], list[j]) < 0) {
+                    swap(j + 1, j);
                     isSwap = true;
                 }
             }
-            if(!isSwap){
+            if (!isSwap) {
                 break;
             }
         }
     }
 
-    public void bubbleSort(){
+    public void bubbleSort() {
         bubbleSort(Comparator.naturalOrder());
+    }
+
+    private void quickSort(int low, int high) {
+        if (low >= high) {
+            return;
+        }
+        int middle = low + (high - low) / 2;
+        T opora = list[middle];
+
+        int i = low;
+        int j = high;
+
+        while (i <= j) {
+            while (list[i].compareTo(opora) < 0) {
+                i++;
+            }
+            while (list[j].compareTo(opora) > 0) {
+                j--;
+            }
+            if (i <= j) {
+                swap(i,j);
+                i++;
+                j--;
+            }
+        }
+
+        if(low < j){
+            quickSort(low,j);
+        }
+        if(high >i){
+            quickSort(i,high);
+        }
+    }
+
+    public void qSort(){
+        quickSort(0,size-1);
     }
 
 }
