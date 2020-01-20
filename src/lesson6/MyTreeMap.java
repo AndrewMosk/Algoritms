@@ -171,4 +171,25 @@ public class MyTreeMap<Key extends Comparable<Key>, Value> {
             return 1 + Math.max(heightOfBinaryTree(node.left), heightOfBinaryTree(node.right));
         }
     }
+
+
+    public boolean isBalanced() {
+        return isBalanced(root);
+    }
+
+    private boolean isBalanced(Node node) {
+        if (node == null) {
+            return true;
+        }
+
+        int leftHeight = heightOfBinaryTree(node.left);
+        int rightHeight = heightOfBinaryTree(node.right);
+
+        if ((Math.abs(leftHeight - rightHeight) <= 1) && isBalanced(node.left) && isBalanced(node.right)) {
+            return true;
+        }
+
+        return false;
+    }
+
 }

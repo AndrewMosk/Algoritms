@@ -22,6 +22,8 @@ public class Main {
             maps[i] = map;
         }
 
-        int a = 1;
+        for (MyTreeMap map : maps) {
+            System.out.println(map.isBalanced());
+        }
     }
 }
