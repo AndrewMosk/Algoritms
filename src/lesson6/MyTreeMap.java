@@ -152,11 +152,23 @@ public class MyTreeMap<Key extends Comparable<Key>, Value> {
     }
 
     private String toString(Node node) {
-        if(node == null){
+        if (node == null) {
             return "";
         }
         return toString(node.left)
                 + "[" + node.key + "=" + node.value + "], "
                 + toString(node.right);
+    }
+
+    public int getHeight() {
+        return heightOfBinaryTree(root)-1;
+    }
+
+    private int heightOfBinaryTree(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            return 1 + Math.max(heightOfBinaryTree(node.left), heightOfBinaryTree(node.right));
+        }
     }
 }
