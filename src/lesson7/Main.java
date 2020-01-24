@@ -4,12 +4,12 @@ public class Main {
     public static void main(String[] args) {
         Graph graph = new Graph(10);
 
-        graph.addEdge(1,2);
-        graph.addEdge(0,4);
-        graph.addEdge(1,4);
-        graph.addEdge(3,4);
+        graph.addEdge(1, 2);
+        graph.addEdge(0, 4);
+        graph.addEdge(1, 4);
+        graph.addEdge(3, 4);
         graph.addEdge(7,8);
-        graph.addEdge(1,3);
+        //graph.addEdge(1,3);
 
         System.out.println(graph.getAdjList(1));
         System.out.println(graph.getEdgeCount());
@@ -24,6 +24,8 @@ public class Main {
         System.out.println(bfp.hasPathTo(8));
         System.out.println(bfp.pathTo(3));
 
-
+        System.out.println(bfp.pathLength(3));
+        System.out.println(bfp.pathLengthRecursion(3));
     }
+
 }
