@@ -47,4 +47,35 @@ public class BreadthFirstPath {
         }
         return stack;
     }
+
+    public int pathLengthRecursion(int dist) {
+        LinkedList<Integer> path = pathTo(dist);
+        return countLengthRecursion(path);
+    }
+
+    private int countLengthRecursion(LinkedList<Integer> path) {
+        if (path.isEmpty()){
+            return 0;
+        }
+        if (path.size() == 1) {
+            return path.getLast() - source;
+        }
+
+        int edgeLength = Math.abs(path.getLast() - path.get(path.size()-2));
+        path.removeLast();
+        return edgeLength + Math.abs(countLengthRecursion(path));
+    }
+
+    public int pathLength(int dist) {
+        LinkedList<Integer> path = pathTo(dist);
+        int length = 0;
+        int start = source;
+
+        for (Integer edge : path) {
+            length += Math.abs(start - edge);
+            start = edge;
+        }
+        return length;
+    }
+
 }
