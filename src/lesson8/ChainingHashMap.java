@@ -1,6 +1,5 @@
 package lesson8;
 
-import javax.xml.soap.Node;
 import java.util.LinkedList;
 
 public class ChainingHashMap<Key, Value> {
@@ -60,6 +59,23 @@ public class ChainingHashMap<Key, Value> {
         }
         st[i].addLast(new Node(key, value));
         size++;
+    }
+
+    public Value remove(Key key) {
+        isKeyNotNull(key);
+        Value value;
+        int i = hash(key);
+        for (Node node : st[i]) {
+            if (key.equals(node.key)) {
+                // сохраняю значение
+                value = node.value;
+                // удаляю узел
+                st[i].remove(node);
+                return value;
+            }
+        }
+        // узел для удаления не найден по ключу
+        return null;
     }
 
     public Value get(Key key) {
